@@ -4,7 +4,7 @@ import classes from './Person.module.css';
 
 // Stateless (presentational component 'dumb')
 const person = ({ name, age, children, click, changed }) => {
-
+  console.log('[Persons.js] rendering...');
   return (
     <div className={classes.Person}>
       <p onClick={click}>

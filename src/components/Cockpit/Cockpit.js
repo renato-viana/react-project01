@@ -20,6 +20,7 @@ const cockpit = (props) => {
   return (
     <div className={classes.Cockpit}>
       <h1>Renato is a Software Engineer!</h1>
+      <h2>{props.title}</h2>
       <p className={assignedClasses.join(' ')}>
         Programming laguanges javaScript, java and python...
       </p>
