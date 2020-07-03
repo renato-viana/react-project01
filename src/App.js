@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import classes from './App.module.css';
 import Person from './Person/Person';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 class App extends Component {
   // Stateful (container 'smart' component)
@@ -65,13 +66,15 @@ class App extends Component {
         <div>
           {this.state.persons.map((person, index) => {
             return (
-              <Person
-                click={() => this.deletePersonHandler(index)}
-                name={person.name}
-                age={person.age}
+              <ErrorBoundary>
                 key={person.id}
-                changed={(event) => this.nameChangedHandler(event, person.id)}
-              />
+                <Person
+                  click={() => this.deletePersonHandler(index)}
+                  name={person.name}
+                  age={person.age}
+                  changed={(event) => this.nameChangedHandler(event, person.id)}
+                />
+              </ErrorBoundary>
             );
           })}
         </div>
@@ -94,10 +97,7 @@ class App extends Component {
         <p className={assignedClasses.join(' ')}>
           Programming laguanges javaScript, java and python...
         </p>
-        <button
-          className={btnClasses}
-          onClick={this.togglePersonHandler}
-        >
+        <button className={btnClasses} onClick={this.togglePersonHandler}>
           Show Persons
         </button>
         {persons}
